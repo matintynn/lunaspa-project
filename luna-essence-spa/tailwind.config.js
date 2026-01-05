@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'nav': '1000px', // Custom breakpoint for navbar
+      },
       colors: {
         // Base colors
         white: '#FFFFFF',
@@ -72,7 +75,7 @@ export default {
         'body-sm': '14px',
         'body-xs': '12px',
         // Special
-        'navlink': '16px',
+        'navlink': '20px',
         'cta': '16px',
       },
       maxWidth: {

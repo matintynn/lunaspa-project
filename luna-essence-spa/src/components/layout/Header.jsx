@@ -32,7 +32,7 @@ function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center" style={{ width: '280px' }}>
             <img
-              src="/src/assets/images/luna-logo.svg"
+              src="/images/luna-logo.svg"
               alt="Luna Essence Spa"
               onError={(e) => {
                 e.target.style.display = 'none'
@@ -73,7 +73,7 @@ function Header() {
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
               >
                 <img
-                  src="/src/assets/images/social-icons/facebook-icon.svg"
+                  src="/images/social-icons/facebook-icon.svg"
                   alt="Facebook"
                   className="w-full h-full"
                 />
@@ -85,7 +85,7 @@ function Header() {
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
               >
                 <img
-                  src="/src/assets/images/social-icons/instagram-icon.svg"
+                  src="/images/social-icons/instagram-icon.svg"
                   alt="Instagram"
                   className="w-full h-full"
                 />
@@ -97,7 +97,7 @@ function Header() {
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
               >
                 <img
-                  src="/src/assets/images/social-icons/tiktok-icon.svg"
+                  src="/images/social-icons/tiktok-icon.svg"
                   alt="TikTok"
                   className="w-full h-full"
                 />
@@ -170,7 +170,7 @@ function Header() {
               className="w-6 h-6 flex items-center justify-center"
             >
               <img
-                src="/src/assets/images/social-icons/facebook-icon.svg"
+                src="/images/social-icons/facebook-icon.svg"
                 alt="Facebook"
                 className="w-full h-full"
               />
@@ -182,7 +182,7 @@ function Header() {
               className="w-6 h-6 flex items-center justify-center"
             >
               <img
-                src="/src/assets/images/social-icons/instagram-icon.svg"
+                src="/images/social-icons/instagram-icon.svg"
                 alt="Instagram"
                 className="w-full h-full"
               />
@@ -194,7 +194,7 @@ function Header() {
               className="w-6 h-6 flex items-center justify-center"
             >
               <img
-                src="/src/assets/images/social-icons/tiktok-icon.svg"
+                src="/images/social-icons/tiktok-icon.svg"
                 alt="TikTok"
                 className="w-full h-full"
               />

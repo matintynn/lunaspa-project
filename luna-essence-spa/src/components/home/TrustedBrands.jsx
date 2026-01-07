@@ -2,14 +2,14 @@ import smallBackground from '../../assets/images/background/small-bg-image.png'
 
 function TrustedBrands() {
     const brands = [
-        { name: 'CNP', image: '/src/assets/images/product-brands/cnp-brand-image.svg' },
-        { name: 'Dermaplane Pro', image: '/src/assets/images/product-brands/dermaplane-brand-image.svg' },
-        { name: 'Glymed Plus', image: '/src/assets/images/product-brands/glymed-brand-image.svg' },
-        { name: 'Image Skincare', image: '/src/assets/images/product-brands/image-brand-image.svg' },
-        { name: 'Medicube', image: '/src/assets/images/product-brands/medicude-brand-image.svg' },
-        { name: 'Rejuran', image: '/src/assets/images/product-brands/rejuran-brand-image.svg' },
-        { name: 'SkinCeuticals', image: '/src/assets/images/product-brands/skinceuticals-brand-image.svg' },
-        { name: 'Xtreme Lashes', image: '/src/assets/images/product-brands/xtreme-brand-image.svg' },
+        { name: 'CNP', image: '/images/product-brands/cnp-brand-image.svg' },
+        { name: 'Dermaplane Pro', image: '/images/product-brands/dermaplane-brand-image.svg' },
+        { name: 'Glymed Plus', image: '/images/product-brands/glymed-brand-image.svg' },
+        { name: 'Image Skincare', image: '/images/product-brands/image-brand-image.svg' },
+        { name: 'Medicube', image: '/images/product-brands/medicude-brand-image.svg' },
+        { name: 'Rejuran', image: '/images/product-brands/rejuran-brand-image.svg' },
+        { name: 'SkinCeuticals', image: '/images/product-brands/skinceuticals-brand-image.svg' },
+        { name: 'Xtreme Lashes', image: '/images/product-brands/xtreme-brand-image.svg' },
     ]
 
     // Duplicate the array to create seamless infinite loop

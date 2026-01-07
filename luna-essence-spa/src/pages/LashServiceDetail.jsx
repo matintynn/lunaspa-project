@@ -1,10 +1,10 @@
 import ServiceDetailTemplate from '../components/services/ServiceDetailTemplate'
 
 const lashImages = [
-    '/src/assets/images/services/lash-service/classic-lash-image.png',
-    '/src/assets/images/services/lash-service/wet-lash-image.png',
-    '/src/assets/images/services/lash-service/hybrid-lash-image.png',
-    '/src/assets/images/services/lash-service/mega-lash-image.png',
+    '/images/services/lash-service/classic-lash-image.png',
+    '/images/services/lash-service/wet-lash-image.png',
+    '/images/services/lash-service/hybrid-lash-image.png',
+    '/images/services/lash-service/mega-lash-image.png',
 ]
 
 const lashServices = [

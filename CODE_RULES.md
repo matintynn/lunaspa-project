@@ -70,7 +70,7 @@ import Button from '@/components/shared/Button'
 <Button variant="tertiary">Skip</Button>
 
 // With icon
-<Button icon="/src/assets/images/icons/arrow-icon.svg">Click Me</Button>
+<Button icon=\"/images/icons/arrow-icon.svg\">Click Me</Button>
 
 // Sizes and states
 <Button size="lg">Large Button</Button>

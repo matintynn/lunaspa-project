@@ -119,7 +119,7 @@ function ContactPage() {
                   title="Follow us on TikTok"
                 >
                   <img
-                    src="/src/assets/images/social-icons/facebook-icon.svg"
+                    src="/images/social-icons/facebook-icon.svg"
                     alt="Facebook"
                     className="w-full h-full"
                   />
@@ -132,7 +132,7 @@ function ContactPage() {
                   title="Follow us on Instagram"
                 >
                   <img
-                    src="/src/assets/images/social-icons/instagram-icon.svg"
+                    src="/images/social-icons/instagram-icon.svg"
                     alt="Instagram"
                     className="w-full h-full"
                   />
@@ -145,7 +145,7 @@ function ContactPage() {
                   title="Follow us on TikTok"
                 >
                   <img
-                    src="/src/assets/images/social-icons/tiktok-icon.svg"
+                    src="/images/social-icons/tiktok-icon.svg"
                     alt="TikTok"
                     className="w-full h-full"
                   />
@@ -170,7 +170,7 @@ function ContactPage() {
               className="block hover:opacity-90 transition-opacity"
             >
               <img
-                src="/src/assets/images/luna-map.svg"
+                src="/images/luna-map.svg"
                 alt="Luna Med Spa Location - Click to view in Google Maps"
                 className="w-full h-auto object-contain cursor-pointer"
               />

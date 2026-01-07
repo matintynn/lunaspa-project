@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import lunaLogo from '../../assets/images/luna-logo.svg'
 
 /**
  * Footer Component
@@ -141,7 +140,7 @@ function Footer() {
                 @lunaessencespa
               </a>
               <img
-                src={lunaLogo}
+                src="/images/luna-logo.svg"
                 alt="Luna Essence Med Spa Logo"
                 className="w-32 h-auto"
               />

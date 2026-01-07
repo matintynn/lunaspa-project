@@ -28,7 +28,7 @@ function AboutPage() {
           {/* About Image */}
           <div className="my-12">
             <img
-              src="/src/assets/images/about-image.jpg"
+              src="/images/about-image.jpg"
               alt="Luna Med Spa"
               className="w-full h-96 object-cover"
               style={{ borderRadius: '24px' }}

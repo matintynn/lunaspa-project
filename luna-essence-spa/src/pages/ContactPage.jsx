@@ -170,7 +170,7 @@ function ContactPage() {
               className="block hover:opacity-90 transition-opacity"
             >
               <img
-                src="/images/luna-map.svg"
+                src="/images/luna-map.png"
                 alt="Luna Med Spa Location - Click to view in Google Maps"
                 className="w-full h-auto object-contain cursor-pointer"
               />

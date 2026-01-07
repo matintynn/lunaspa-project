@@ -71,62 +71,88 @@ function ServicesSection() {
     ]
 
     return (
-        <section
-            className="relative py-20 md:pb-16"
-            style={{
-                backgroundImage: `url(${backgroundImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-            }}
-        >
-            <div className="max-w-container mx-auto px-8">
-                {/* Section Header */}
-                <h2 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-10">
-                    Our Services
-                </h2>
+        <>
+            <style>{`
+                .services-section {
+                    background-image: none;
+                }
+                @media (min-width: 768px) {
+                    .services-section {
+                        background-image: url(${backgroundImage});
+                        background-size: cover;
+                        background-position: center;
+                    }
+                }
+            `}</style>
+            <section className="services-section relative py-20 md:pb-16">
+                <div className="max-w-container mx-auto px-8">
+                    {/* Section Header */}
+                    <h2 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-10">
+                        Our Services
+                    </h2>
 
-                {/* Services Grid - Staggered Layout */}
-                <div className="max-w-6xl mx-auto">
-                    <div className="flex flex-col gap-12 md:gap-0">
-                        {services.map((service, index) => {
-                            const isEven = (index + 1) % 2 === 0
-                            const isLarge = [0, 1, 3, 5].includes(index) // Facial, Lash, Body, Skincare
-                            const imageSize = isLarge ? 'w-80 h-80 md:w-96 md:h-96' : 'w-80 h-80 md:w-96 md:h-96'
+                    {/* Services Grid - Staggered Layout */}
+                    <div className="max-w-6xl mx-auto">
+                        <div className="flex flex-col gap-12 md:gap-0">
+                            {services.map((service, index) => {
+                                const isEven = (index + 1) % 2 === 0
+                                const isLarge = [0, 1, 3, 5].includes(index) // Facial, Lash, Body, Skincare
+                                const imageSize = isLarge ? 'w-80 h-80 md:w-96 md:h-96' : 'w-80 h-80 md:w-96 md:h-96'
 
-                            return (
-                                <div
-                                    key={service.id}
-                                    className={`group flex flex-col items-center md:items-stretch md:flex-row gap-8 md:gap-12 ${isEven
-                                        ? 'md:flex-row-reverse md:text-right'
-                                        : 'md:flex-row md:text-left'
-                                        }`}
-                                >
-                                    {/* Image */}
-                                    <div className={`${imageSize} flex-shrink-0`}>
-                                        <div className="background-transparent w-full h-full">
-                                            <img
-                                                src={service.image}
-                                                alt={service.title}
-                                                className="w-full h-full object-contain rounded-full transition-transform duration-300 ease-in-out group-hover:animate-float"
-                                            />
+                                return (
+                                    <div
+                                        key={service.id}
+                                        className={`group flex flex-col items-center md:items-stretch md:flex-row gap-8 md:gap-12 ${isEven
+                                            ? 'md:flex-row-reverse md:text-right'
+                                            : 'md:flex-row md:text-left'
+                                            }`}
+                                    >
+                                        {/* Image */}
+                                        <div className={`${imageSize} flex-shrink-0`}>
+                                            <div className="background-transparent w-full h-full">
+                                                <img
+                                                    src={service.image}
+                                                    alt={service.title}
+                                                    className="w-full h-full object-contain rounded-full transition-transform duration-300 ease-in-out group-hover:animate-float"
+                                                />
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {/* Content */}
-                                    <div className={`flex flex-col justify-center space-y-4 w-full max-w-sm mx-auto md:max-w-none md:mx-0 text-center ${isEven ? 'md:text-right' : 'md:text-left'
-                                        }`}>
-                                        <h3 className="font-serif italic text-h2 text-primary-800">
-                                            {service.title}
-                                        </h3>
-                                        <p className="font-sans text-body-md text-neutral-500 leading-relaxed">
-                                            {service.description}
-                                        </p>
-                                        <div className={`flex ${isEven
-                                            ? 'justify-center md:justify-end'
-                                            : 'justify-center md:justify-start'
+                                        {/* Content */}
+                                        <div className={`flex flex-col justify-center space-y-4 w-full max-w-sm mx-auto md:max-w-none md:mx-0 text-center ${isEven ? 'md:text-right' : 'md:text-left'
                                             }`}>
-                                            {service.link ? (
-                                                <Link to={service.link}>
+                                            <h3 className="font-serif italic text-h2 text-primary-800">
+                                                {service.title}
+                                            </h3>
+                                            <p className="font-sans text-body-md text-neutral-500 leading-relaxed">
+                                                {service.description}
+                                            </p>
+                                            <div className={`flex ${isEven
+                                                ? 'justify-center md:justify-end'
+                                                : 'justify-center md:justify-start'
+                                                }`}>
+                                                {service.link ? (
+                                                    <Link to={service.link}>
+                                                        <Button
+                                                            variant="secondary"
+                                                            size="md"
+                                                            className="group"
+                                                            icon={arrowIcon}
+                                                        >
+                                                            {service.buttonText}
+                                                        </Button>
+                                                    </Link>
+                                                ) : service.externalLink ? (
+                                                    <Button
+                                                        variant="secondary"
+                                                        size="md"
+                                                        className="group"
+                                                        icon={arrowIcon}
+                                                        onClick={() => window.open(service.externalLink, '_blank')}
+                                                    >
+                                                        {service.buttonText}
+                                                    </Button>
+                                                ) : (
                                                     <Button
                                                         variant="secondary"
                                                         size="md"
@@ -135,36 +161,17 @@ function ServicesSection() {
                                                     >
                                                         {service.buttonText}
                                                     </Button>
-                                                </Link>
-                                            ) : service.externalLink ? (
-                                                <Button
-                                                    variant="secondary"
-                                                    size="md"
-                                                    className="group"
-                                                    icon={arrowIcon}
-                                                    onClick={() => window.open(service.externalLink, '_blank')}
-                                                >
-                                                    {service.buttonText}
-                                                </Button>
-                                            ) : (
-                                                <Button
-                                                    variant="secondary"
-                                                    size="md"
-                                                    className="group"
-                                                    icon={arrowIcon}
-                                                >
-                                                    {service.buttonText}
-                                                </Button>
-                                            )}
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

@@ -39,14 +39,7 @@ function TeamSection() {
     ]
 
     return (
-        <section
-            style={{
-                backgroundImage: `url(${heroBgImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-            }}
-        >
+        <section>
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 py-16 md:py-24 lg:py-32">
                     {teamMembers.map((member, index) => (

@@ -13,7 +13,7 @@ function AddOnServicesSection({ addOns }) {
     return (
         <section className="relative border-t border-b border-primary-600">
             <Container className="relative z-10 bg-primary-100 border-x border-primary-600">
-                <div className="py-16 px-16">
+                <div className="py-10 px-6 md:px-16 md:py-16">
                     <h3 className="font-serif font-semibold italic text-h2 text-primary-800 mb-4">
                         Add-On Services
                     </h3>

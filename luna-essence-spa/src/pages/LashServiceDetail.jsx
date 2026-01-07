@@ -79,16 +79,6 @@ const policies = {
         '(*) Please note: Any correction requests made after the first 3 days following your appointment will not be accepted.',
 }
 
-const extraServices = [
-    'Lash Lift : $95',
-    'Brown Lamination + Tint : $95',
-    'Facial',
-    'Eyebrow',
-    'Body',
-    'Medical Treatment',
-    'Skincare Products',
-]
-
 function LashServiceDetail() {
     return (
         <ServiceDetailTemplate
@@ -96,7 +86,6 @@ function LashServiceDetail() {
             services={lashServices}
             addOns={addOns}
             policies={policies}
-            extraServices={extraServices}
             images={lashImages}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"
         />

@@ -6,7 +6,7 @@ import PoliciesSection from './PoliciesSection'
 import arrowIcon from '../../assets/images/icons/arrow-icon.svg'
 
 
-function ServiceDetailTemplate({ header, services, addOns, policies, extraServices, images, bookingUrl }) {
+function ServiceDetailTemplate({ header, services, addOns, policies, images, bookingUrl }) {
     const navigate = useNavigate()
 
     const handleGoBack = () => {
@@ -61,15 +61,6 @@ function ServiceDetailTemplate({ header, services, addOns, policies, extraServic
 
                     <PoliciesSection policies={policies} />
 
-                    {/* Extra Services */}
-                    {/* <div>
-                        <h3 className="text-h3 font-serif font-semibold italic text-primary-800 mb-4">Other services</h3>
-                        <ul className="flex flex-wrap gap-4">
-                            {extraServices.map((s, i) => (
-                                <li key={i} className="border rounded-full px-4 py-2 text-primary-800 bg-white">{s}</li>
-                            ))}
-                        </ul>
-                    </div> */}
                     {/* Go Back Button */}
                     <div className="text-center mt-12">
                         <Button variant="secondary" onClick={handleGoBack}>

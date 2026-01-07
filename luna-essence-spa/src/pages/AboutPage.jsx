@@ -2,39 +2,6 @@ import Container from '../components/shared/Container'
 import TestimonialsSection from '../components/shared/TestimonialsSection'
 import TeamSection from '../components/home/TeamSection'
 
-// Data
-const testimonials = [
-  {
-    author: 'Emily R.',
-    quote: "I've never felt this safe walking into a med spa. The girls at Luna hype you up from the moment you walk in. My skin looks amazing, but honestly… the confidence boost is the real magic."
-  },
-  {
-    author: 'Hannah P.',
-    quote: "I was nervous about trying injectables, but Luna made everything feel so easy and calm. They explained everything in simple words and made me feel like I was hanging out with a supportive friend."
-  }
-]
-
-const teamMembers = [
-  {
-    name: 'Tiffany Nguyen',
-    title: 'Lead Aesthetician',
-    bio: 'Specialist in advanced skincare treatments',
-    image: '/src/assets/images/staffs/tiffany-image.jpg'
-  },
-  {
-    name: 'Angie Tran',
-    title: 'Master Injector',
-    bio: 'Expert in facial aesthetics',
-    image: '/src/assets/images/staffs/angie-image.jpg'
-  },
-  {
-    name: 'Daisie Lai',
-    title: 'Wellness Consultant',
-    bio: 'Holistic beauty specialist',
-    image: '/src/assets/images/staffs/daisie-image.jpg'
-  }
-]
-
 function AboutPage() {
   return (
     <div className="mt-24">
@@ -89,10 +56,10 @@ function AboutPage() {
       </Container>
 
       {/* Testimonials Section */}
-      <TestimonialsSection testimonials={testimonials} />
+      <TestimonialsSection />
 
       {/* Team Section */}
-      <TeamSection teamMembers={teamMembers} />
+      <TeamSection />
     </div>
   )
 }

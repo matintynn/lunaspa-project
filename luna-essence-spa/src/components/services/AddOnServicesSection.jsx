@@ -1,5 +1,4 @@
 import Container from '../shared/Container'
-import smallBackground from '../../assets/images/background/small-bg-image.png'
 
 /**
  * AddOnServicesSection Component

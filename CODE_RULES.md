@@ -119,7 +119,51 @@ export default PageName
 
 ---
 
-## 6. Accessibility
+## 6. Page Header Style Standard
+
+**ALL new pages must follow this header structure** for consistency:
+
+```jsx
+<div className="mt-24">
+  <Container className='py-20 md:pb-16'>
+    <h1 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-12">
+      {header}
+    </h1>
+    {/* Rest of page content */}
+  </Container>
+</div>
+```
+
+**Key requirements:**
+- Use `mt-24` for top margin (accounts for fixed header)
+- Wrap in `Container` with `py-20 md:pb-16` classes
+- Header styling: `text-h1 font-serif font-semibold italic text-primary-800 text-center mb-12`
+- Header text should be passed as a prop or variable
+- Content should be centered and contained
+
+**Example usage:**
+```jsx
+function NewPage() {
+  const pageHeader = "Our Services"
+  
+  return (
+    <Layout>
+      <div className="mt-24">
+        <Container className='py-20 md:pb-16'>
+          <h1 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-12">
+            {pageHeader}
+          </h1>
+          {/* Page specific content here */}
+        </Container>
+      </div>
+    </Layout>
+  )
+}
+```
+
+---
+
+## 7. Accessibility
 
 **Use semantic HTML** and proper ARIA labels
 
@@ -142,7 +186,7 @@ export default PageName
 
 ---
 
-## 7. Performance
+## 8. Performance
 
 **Optimize images** - Use WebP/SVG, add alt text
 
@@ -163,7 +207,7 @@ function App() {
 
 ---
 
-## 8. Code Quality
+## 9. Code Quality
 
 **Remove console.logs** from production
 
@@ -189,7 +233,7 @@ const totalPrice = (basePrice * quantity * (1 - discount)) * (1 + taxRate)
 
 ---
 
-## 9. Git Commits
+## 10. Git Commits
 
 **Clear commit messages**
 ```

@@ -44,7 +44,7 @@ function HeroSection() {
 
                         <div className="flex flex-wrap">
                             <a
-                                href="https://thelunamedspa.glossgenius.com/?fbclid=IwY2xjawPI65JleHRuA2FlbQIxMABicmlkETFKU1BLZExFZU1tQWo3eER4c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHtMHCZnzYu0rHtzO0JGZLklFTZtk34it8oFwg8ZwBOv-R_A2b8hcI5Tj8TVw_aem_NHjSr2L1EywcKR0NbRF-uQ"
+                                href="https://thelunamedspa.glossgenius.com/services"
                                 target="_blank"
                                 rel="noreferrer"
                             >

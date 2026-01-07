@@ -4,17 +4,7 @@ import Button from '../shared/Button'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100) // Adjust 100 to your preference
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -31,8 +21,12 @@ function Header() {
   }
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 border-b border-primary-600 transition-colors duration-900 ${isScrolled ? 'bg-background' : 'bg-transparent'
-      }`} style={{ height: '120px' }}>
+    <header className="fixed top-0 left-0 w-full z-50 border-b border-primary-600 transition-colors duration-300 bg-background"
+      style={{
+        height: '120px',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E")`,
+        backgroundSize: '400px 400px'
+      }}>
       <div className="mx-auto px-4 nav:px-8 h-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo */}
@@ -109,7 +103,15 @@ function Header() {
                 />
               </a>
             </div>
-            <Button>Book Now</Button>
+            <a
+              href="https://thelunamedspa.glossgenius.com/services"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button variant="primary" size="md">
+                Book Now
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}

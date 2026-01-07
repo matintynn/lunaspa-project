@@ -7,11 +7,6 @@ const serviceDetails = {
     description: 'Comprehensive facial treatments for all skin types',
     content: 'Detailed information about facial services will go here...',
   },
-  lash: {
-    name: 'Lash Services',
-    description: 'Professional lash extensions and treatments',
-    content: 'Detailed information about lash services will go here...',
-  },
   eyebrow: {
     name: 'Eyebrow Services',
     description: 'Expert eyebrow shaping and styling',
@@ -71,3 +66,4 @@ function ServiceDetailPage() {
 }
 
 export default ServiceDetailPage
+

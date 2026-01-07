@@ -58,7 +58,7 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+        serif: ['Cormorant Garamond', 'serif'],
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
@@ -70,6 +70,7 @@ export default {
         'h5': '20px',
         'h6': '18px',
         // Body
+        'body-xl': '20px',
         'body-lg': '18px',
         'body-md': '16px',
         'body-sm': '14px',
@@ -77,6 +78,7 @@ export default {
         // Special
         'navlink': '20px',
         'cta': '16px',
+        'section-header': '56px', // Section headers - serif, semibold, italic
       },
       maxWidth: {
         'container': '1188px',
@@ -85,6 +87,15 @@ export default {
       spacing: {
         'gutter': '32px',
         'col': '90px',
+      },
+      keyframes: {
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
+        }
+      },
+      animation: {
+        'float': 'float 3s ease-in-out infinite',
       },
     },
   },

@@ -27,7 +27,7 @@ function Container({ children, className = '' }) {
     // max-w-container: 1188px (custom from config)
     // mx-auto: Center horizontally
     // px-4 md:px-8: Mobile 16px padding, Desktop 32px padding
-    <div className={`max-w-container mx-auto px-4 md:px-8 ${className}`}>
+    <div className={`max-w-container mx-auto px-4 ${className}`}>
       {children}
     </div>
   )

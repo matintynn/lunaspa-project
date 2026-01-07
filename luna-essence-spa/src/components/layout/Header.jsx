@@ -67,10 +67,11 @@ function Header() {
           <div className="hidden nav:flex items-center gap-6">
             <div className="flex items-center gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/people/Luna-Essence-Medspa-and-Lash/61579948200539/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
+                title="Follow us on TikTok"
               >
                 <img
                   src="/images/social-icons/facebook-icon.svg"
@@ -79,10 +80,11 @@ function Header() {
                 />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/lunaessencespa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
+                title="Follow us on Instagram"
               >
                 <img
                   src="/images/social-icons/instagram-icon.svg"
@@ -91,10 +93,11 @@ function Header() {
                 />
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@lunaessencespa?_r=1&_t=ZT-92pRzWyyKsp&fbclid=IwY2xjawPKZsNleHRuA2FlbQIxMABicmlkETFSUDdoMjl1QmZPQnVNdUVZc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHv4wg3oO49fprfanWnN1hqKKgZy9XKMJ3OhQK3IgFBZwcyAWfuqyYu4znBsf_aem_-QhiGUb7pC-Z-Bbs7Z4JDA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
+                title="Follow us on TikTok"
               >
                 <img
                   src="/images/social-icons/tiktok-icon.svg"

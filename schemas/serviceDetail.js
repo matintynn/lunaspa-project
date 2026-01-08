@@ -46,17 +46,17 @@ export default {
             },
         },
         {
-            name: 'refillTitle',
-            title: 'Refill Section Title',
+            name: 'noteTitle',
+            title: 'Note Section Title',
             type: 'string',
             description: 'e.g., "Classic Refill:" (optional)',
         },
         {
-            name: 'refills',
-            title: 'Refill Options',
+            name: 'addNote',
+            title: 'Additional Notes',
             type: 'array',
             of: [{ type: 'string' }],
-            description: 'List of refill prices and timeframes',
+            description: 'List of additional notes or information',
         },
         {
             name: 'order',

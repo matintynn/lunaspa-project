@@ -20,7 +20,7 @@ function Button({
 
     const variantStyles = {
         primary: 'bg-primary-700 text-white hover:bg-primary-800 active:bg-primary-900',
-        secondary: 'bg-transparent border border-neutral-900 text-neutral-900 hover:bg-neutral-50 active:bg-neutral-100',
+        secondary: 'bg-transparent border border-primary-600 text-primary-800 hover:bg-primary-100 active:bg-primary-200',
         tertiary: 'bg-transparent text-neutral-400 hover:text-neutral-600 active:text-neutral-800',
     }
 

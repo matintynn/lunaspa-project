@@ -22,12 +22,12 @@
  * @param {string} props.className - Additional Tailwind classes (optional)
  * @returns {JSX.Element} Centered, constrained content wrapper
  */
-function Container({ children, className = '' }) {
+function Container({ children, className = '', ...props }) {
   return (
     // max-w-container: 1188px (custom from config)
     // mx-auto: Center horizontally
     // px-4 md:px-8: Mobile 16px padding, Desktop 32px padding
-    <div className={`max-w-container mx-auto px-4 ${className}`}>
+    <div {...props} className={`max-w-container mx-auto px-4 ${className}`}>
       {children}
     </div>
   )

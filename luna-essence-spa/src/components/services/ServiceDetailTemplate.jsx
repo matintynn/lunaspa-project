@@ -6,12 +6,18 @@ import PoliciesSection from './PoliciesSection'
 import arrowIcon from '../../assets/images/icons/arrow-icon.svg'
 
 
-function ServiceDetailTemplate({ header, services, addOns, policies, images, bookingUrl }) {
+function ServiceDetailTemplate({ header, services = [], addOns = [], policies, bookingUrl, loading = false, emptyMessage = 'New services are coming soon. Please check back!' }) {
     const navigate = useNavigate()
 
     const handleGoBack = () => {
         navigate(-1)
     }
+
+    const hasPolicies = policies && (
+        (Array.isArray(policies.refill) && policies.refill.length > 0) ||
+        Boolean(policies.correction) ||
+        Boolean(policies.note)
+    )
 
     return (
         <section className="mt-24">
@@ -20,46 +26,66 @@ function ServiceDetailTemplate({ header, services, addOns, policies, images, boo
                     {header}
                 </h1>
                 <div className="mx-auto">
-                    {services.map((service, idx) => (
-                        <div key={service.title} className="flex flex-col md:flex-row items-center gap-8 mb-24">
-                            <img
-                                src={images[idx]}
-                                alt={service.title}
-                                style={{ width: 'auto', height: 'auto', maxWidth: '300px' }}
-                            />
-                            <div className="flex-1">
-                                <div className="flex items-center gap-4 mb-2">
-                                    <h2 className="text-h2 font-serif font-semibold italic text-primary-800">{service.title}</h2>
-                                    <span className="bg-secondary-100 text-primary-800 font-semibold px-4 py-2 rounded-full text-lg" style={{ fontFamily: 'DM Sans', fontStyle: 'italic' }}>
-                                        {service.price}
-                                    </span>
-                                </div>
-                                <p className="text-neutral-500 font-light mb-2">{service.description}</p>
-                                <div className="text-neutral-500 font-light mb-4">
-                                    <strong className="text-primary-800">{service.refillTitle}</strong>
-                                    <ul className="list-disc ml-6 mt-1">
-                                        {service.refills.map((r, i) => (
-                                            <li key={i}>{r}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                {bookingUrl && (
-                                    <Button
-                                        variant="secondary"
-                                        icon={arrowIcon}
-                                        onClick={() => window.open(bookingUrl, '_blank')}
-                                        className="mt-3"
-                                    >
-                                        Book Now
-                                    </Button>
-                                )}
-                            </div>
+                    {services.length === 0 && (
+                        <div className="text-center text-neutral-500 font-light py-12">
+                            {loading ? 'Loading services...' : emptyMessage}
                         </div>
-                    ))}
+                    )}
+                    {services.map((service, idx) => {
+                        const renderedImage = service.image || null
+                        return (
+                            <div key={`${service.title}-${idx}`} className="flex flex-col md:flex-row items-center gap-8 mb-24">
+                                {renderedImage && (
+                                    <img
+                                        src={renderedImage}
+                                        alt={service.title}
+                                        style={{ width: 'auto', height: 'auto', maxWidth: '300px' }}
+                                    />
+                                )}
+                                <div className="flex-1 w-full">
+                                    <div className="flex items-center gap-4 mb-2">
+                                        <h2 className="text-h2 font-serif font-semibold italic text-primary-800">{service.title}</h2>
+                                        <span className="bg-secondary-100 text-primary-800 font-semibold px-4 py-2 rounded-full text-lg" style={{ fontFamily: 'DM Sans', fontStyle: 'italic' }}>
+                                            {service.price}
+                                        </span>
+                                    </div>
+                                    <p className="text-neutral-500 font-light mb-2">{service.description}</p>
+                                    {(service.refillTitle || (service.refills && service.refills.length > 0)) && (
+                                        <div className="text-neutral-500 font-light mb-4">
+                                            {service.refillTitle && (
+                                                <strong className="text-primary-800">{service.refillTitle}</strong>
+                                            )}
+                                            {service.refills && service.refills.length > 0 && (
+                                                <ul className="list-disc ml-6 mt-1">
+                                                    {service.refills.map((r, i) => (
+                                                        <li key={i}>{r}</li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    )}
+                                    {bookingUrl && (
+                                        <Button
+                                            variant="secondary"
+                                            icon={arrowIcon}
+                                            onClick={() => window.open(bookingUrl, '_blank')}
+                                            className="mt-3"
+                                        >
+                                            Book Now
+                                        </Button>
+                                    )}
+                                </div>
+                            </div>
+                        )
+                    })}
 
-                    <AddOnServicesSection addOns={addOns} />
+                    {Array.isArray(addOns) && addOns.length > 0 && (
+                        <AddOnServicesSection addOns={addOns} />
+                    )}
 
-                    <PoliciesSection policies={policies} />
+                    {hasPolicies && (
+                        <PoliciesSection policies={policies} />
+                    )}
 
                     {/* Go Back Button */}
                     <div className="text-center mt-12">

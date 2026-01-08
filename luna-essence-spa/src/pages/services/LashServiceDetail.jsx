@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react'
-import ServiceDetailTemplate from '../components/services/ServiceDetailTemplate'
-import { fetchServicesByCategory, formatServices } from '../lib/sanity-queries'
-
-const lashImages = [
-    '/images/services/lash-service/classic-lash-image.png',
-    '/images/services/lash-service/wet-lash-image.png',
-    '/images/services/lash-service/hybrid-lash-image.png',
-    '/images/services/lash-service/mega-lash-image.png',
-]
+import ServiceDetailTemplate from '../../components/services/ServiceDetailTemplate'
+import { useServiceMenu } from '../../hooks/useServiceMenu'
+import classicImage from '../../assets/images/services/lash-service/classic-lash-image.png'
+import wetImage from '../../assets/images/services/lash-service/wet-lash-image.png'
+import hybridImage from '../../assets/images/services/lash-service/hybrid-lash-image.png'
+import megaImage from '../../assets/images/services/lash-service/mega-lash-image.png'
 
 const addOns = [
     'Lash Bath: $10',
@@ -23,15 +19,12 @@ const policies = {
         '⏰ For best results and cost savings, please book refills every 2–3 weeks.',
         '💼 Refills requested after 3 weeks or when over 40% of lashes have shed will be treated as a Full Set.',
         '💖 We cannot guarantee refill quality on lashes applied by other technicians or unknown products.',
-    ],
-    correction:
-        'Because of natural factors and individual lash retention, some lashes may shed after your appointment. We offer a complimentary correction within 3 days of the service date. Clients must contact us within this time frame to return for the correction.',
-    note:
+        '📌 Because of natural factors and individual lash retention, some lashes may shed after your appointment. We offer a complimentary correction within 3 days of the service date. Clients must contact us within this time frame to return for the correction.',
         '(*) Please note: Any correction requests made after the first 3 days following your appointment will not be accepted.',
+    ],
 }
 
-// Fallback lash services if Sanity data fails
-const fallbackLashServices = [
+const fallbackServices = [
     {
         title: 'Classic full set (Individual)',
         price: '$99',
@@ -43,6 +36,7 @@ const fallbackLashServices = [
             '3 weeks : $65',
             'Over 3 weeks: Full Set Price Applies',
         ],
+        image: classicImage,
     },
     {
         title: 'Wet look full set (Individual 2D - 3D)',
@@ -55,6 +49,7 @@ const fallbackLashServices = [
             '3 weeks : $75',
             'Over 3 weeks: Full Set Price Applies',
         ],
+        image: wetImage,
     },
     {
         title: 'Hybrid full set (Classic - Volume 2D - 4D)',
@@ -67,6 +62,7 @@ const fallbackLashServices = [
             '3 weeks: $75',
             'Over 3 weeks: Full Set Price Applies',
         ],
+        image: hybridImage,
     },
     {
         title: 'Mega full set (8D - 16D)',
@@ -79,44 +75,21 @@ const fallbackLashServices = [
             '3 weeks: $155',
             'Over 3 weeks: Full Set Price Applies',
         ],
+        image: megaImage,
     },
 ]
 
 function LashServiceDetail() {
-    const [lashServices, setLashServices] = useState(fallbackLashServices)
-    const [loading, setLoading] = useState(true)
+    const { services, loading } = useServiceMenu('lash', fallbackServices)
 
-    useEffect(() => {
-        const loadLashServices = async () => {
-            try {
-                const services = await fetchServicesByCategory('lash')
-                if (services.length > 0) {
-                    const formattedServices = formatServices(services)
-                    setLashServices(formattedServices.map(service => ({
-                        title: service.title,
-                        price: service.price,
-                        description: service.description,
-                        refillTitle: service.refillTitle,
-                        refills: service.refills || [],
-                    })))
-                }
-            } catch (error) {
-                console.error('Failed to load lash services:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        loadLashServices()
-    }, [])
     return (
         <ServiceDetailTemplate
             header="LASH MENU"
-            services={lashServices}
+            services={services}
             addOns={addOns}
             policies={policies}
-            images={lashImages}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"
+            loading={loading}
         />
     )
 }

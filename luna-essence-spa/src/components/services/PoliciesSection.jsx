@@ -14,22 +14,22 @@ function PoliciesSection({ policies }) {
         <section>
             <div className="py-20">
                 <h3 className="font-serif font-semibold italic text-h2 text-primary-800 mb-8">
-                    Policies (recommended to include)
+                    Policies
                 </h3>
                 <div className="">
                     <div className="mb-6">
-                        <strong className="text-primary-800 font-semibold">Refill Policy:</strong>
+                        <strong className="text-primary-800 font-semibold">Keep in mind:</strong>
                         <ul className="list-none ml-0 mt-2">
                             {policies.refill.map((p, i) => (
                                 <li key={i} className="text-base md:text-md leading-relaxed text-neutral-500 font-light font-sans mb-2">{p}</li>
                             ))}
                         </ul>
                     </div>
-                    <div>
-                        <strong className="text-primary-800 font-semibold">Lash Correction Policy:</strong>
+                    {/* <div>
+                        <strong className="text-primary-800 font-semibold">Note:</strong>
                         <p className="text-base md:text-md leading-relaxed text-neutral-500 font-light font-sans mt-2">{policies.correction}</p>
                         <p className="text-sm italic leading-relaxed text-neutral-500 font-light font-sans mt-2">{policies.note}</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section >

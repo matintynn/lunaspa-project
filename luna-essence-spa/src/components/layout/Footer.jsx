@@ -1,9 +1,13 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import SocialMedia from '../shared/SocialMedia'
+import { fetchSiteSettings } from '../../lib/sanity-queries'
 
 /**
  * Footer Component
  * 
  * Site footer with contact info, hours, services, and social links.
+ * Fetches business hours from Sanity CMS.
  * 
  * Layout:
  * - Top: Brand name
@@ -14,6 +18,34 @@ import { Link } from 'react-router-dom'
  * @returns {JSX.Element} Footer
  */
 function Footer() {
+  const [siteSettings, setSiteSettings] = useState(null)
+
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const settings = await fetchSiteSettings()
+        setSiteSettings(settings)
+      } catch (error) {
+        console.error('Failed to load site settings:', error)
+      }
+    }
+
+    loadSettings()
+  }, [])
+
+  // Fallback data if Sanity fails
+  const contact = siteSettings?.contact || {
+    address: '3057 W. Holcombe Blvd, Suite 109, Houston, Texas 7702',
+    phone: '(555) 123-4567',
+    email: 'thelunamedspa@gmail.com',
+    googleMapsUrl: 'https://maps.app.goo.gl/soAudmixkutjSauB9',
+  }
+
+  const hours = siteSettings?.businessHours || {
+    mondayToFriday: '9am - 7pm',
+    saturday: '9am - 6pm',
+    sunday: '10am - 5pm',
+  }
   return (
     <footer
       className="bg-secondary-200"
@@ -39,24 +71,24 @@ function Footer() {
               <p>
                 <span className="font-medium text-neutral-700">Address:</span>{' '}
                 <a
-                  href="https://maps.app.goo.gl/soAudmixkutjSauB9"
+                  href={contact.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary-700 transition-colors cursor-pointer"
                 >
-                  3057 W. Holcombe Blvd, Suite 109, Houston, Texas 7702
+                  {contact.address}
                 </a>
               </p>
               <p>
-                <span className="font-medium text-neutral-700">Phone:</span> (555) 123-4567
+                <span className="font-medium text-neutral-700">Phone:</span> {contact.phone}
               </p>
               <p>
                 <span className="font-medium text-neutral-700">Email:</span>{' '}
                 <a
-                  href="mailto:thelunamedspa@gmail.com"
+                  href={`mailto:${contact.email}`}
                   className="hover:text-primary-700 transition-colors"
                 >
-                  thelunamedspa@gmail.com
+                  {contact.email}
                 </a>
               </p>
             </div>
@@ -66,9 +98,9 @@ function Footer() {
           <div>
             <h5 className="font-serif text-h4 font-semibold italic text-primary-800 mb-4">Hours</h5>
             <div className="space-y-2 text-body-md font-sans text-neutral-500">
-              <p>Monday - Friday: 9am - 7pm</p>
-              <p>Saturday: 9am - 6pm</p>
-              <p>Sunday: 10am - 5pm</p>
+              <p>Monday - Friday: {hours.mondayToFriday}</p>
+              <p>Saturday: {hours.saturday}</p>
+              <p>Sunday: {hours.sunday}</p>
             </div>
           </div>
 
@@ -129,16 +161,9 @@ function Footer() {
 
           {/* Column 4 - Follow Us */}
           <div>
-            <h5 className="font-serif text-h4 font-semibold italic text-primary-00 mb-4">Follow Us</h5>
+            <h5 className="font-serif text-h4 font-semibold italic text-primary-800 mb-4">Follow Us</h5>
             <div className="space-y-4">
-              <a
-                href="https://instagram.com/lunaessencespa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-body-md font-sans text-neutral-500 hover:text-primary-700 transition-colors block"
-              >
-                @lunaessencespa
-              </a>
+              <SocialMedia />
               <img
                 src="/images/luna-logo.svg"
                 alt="Luna Essence Med Spa Logo"

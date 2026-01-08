@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import ServiceDetailTemplate from '../components/services/ServiceDetailTemplate'
+import { fetchServicesByCategory, formatServices } from '../lib/sanity-queries'
 
 const lashImages = [
     '/images/services/lash-service/classic-lash-image.png',
@@ -7,7 +9,29 @@ const lashImages = [
     '/images/services/lash-service/mega-lash-image.png',
 ]
 
-const lashServices = [
+const addOns = [
+    'Lash Bath: $10',
+    'Foreign Fill (from another salon): +$10–$20 depending on lash condition',
+    'Lash Removal: $25',
+    'Lash Removal - Fullset : $10',
+    'Wispy Style : $20',
+    'Lash tint : $25',
+]
+
+const policies = {
+    refill: [
+        '⏰ For best results and cost savings, please book refills every 2–3 weeks.',
+        '💼 Refills requested after 3 weeks or when over 40% of lashes have shed will be treated as a Full Set.',
+        '💖 We cannot guarantee refill quality on lashes applied by other technicians or unknown products.',
+    ],
+    correction:
+        'Because of natural factors and individual lash retention, some lashes may shed after your appointment. We offer a complimentary correction within 3 days of the service date. Clients must contact us within this time frame to return for the correction.',
+    note:
+        '(*) Please note: Any correction requests made after the first 3 days following your appointment will not be accepted.',
+}
+
+// Fallback lash services if Sanity data fails
+const fallbackLashServices = [
     {
         title: 'Classic full set (Individual)',
         price: '$99',
@@ -58,28 +82,33 @@ const lashServices = [
     },
 ]
 
-const addOns = [
-    'Lash Bath: $10',
-    'Foreign Fill (from another salon): +$10–$20 depending on lash condition',
-    'Lash Removal: $25',
-    'Lash Removal - Fullset : $10',
-    'Wispy Style : $20',
-    'Lash tint : $25',
-]
-
-const policies = {
-    refill: [
-        '⏰ For best results and cost savings, please book refills every 2–3 weeks.',
-        '💼 Refills requested after 3 weeks or when over 40% of lashes have shed will be treated as a Full Set.',
-        '💖 We cannot guarantee refill quality on lashes applied by other technicians or unknown products.',
-    ],
-    correction:
-        'Because of natural factors and individual lash retention, some lashes may shed after your appointment. We offer a complimentary correction within 3 days of the service date. Clients must contact us within this time frame to return for the correction.',
-    note:
-        '(*) Please note: Any correction requests made after the first 3 days following your appointment will not be accepted.',
-}
-
 function LashServiceDetail() {
+    const [lashServices, setLashServices] = useState(fallbackLashServices)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const loadLashServices = async () => {
+            try {
+                const services = await fetchServicesByCategory('lash')
+                if (services.length > 0) {
+                    const formattedServices = formatServices(services)
+                    setLashServices(formattedServices.map(service => ({
+                        title: service.title,
+                        price: service.price,
+                        description: service.description,
+                        refillTitle: service.refillTitle,
+                        refills: service.refills || [],
+                    })))
+                }
+            } catch (error) {
+                console.error('Failed to load lash services:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        loadLashServices()
+    }, [])
     return (
         <ServiceDetailTemplate
             header="LASH MENU"

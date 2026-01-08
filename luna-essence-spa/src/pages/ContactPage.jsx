@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Container from '../components/shared/Container'
+import SocialMedia from '../components/shared/SocialMedia'
+import { fetchSiteSettings } from '../lib/sanity-queries'
 
 // FAQ data with Luna's brand voice
 const faqs = [
@@ -58,9 +60,34 @@ function FAQItem({ faq, isOpen, onToggle }) {
 
 function ContactPage() {
   const [openFAQ, setOpenFAQ] = useState(null)
+  const [siteSettings, setSiteSettings] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const settings = await fetchSiteSettings()
+        setSiteSettings(settings)
+      } catch (error) {
+        console.error('Failed to load site settings:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadSettings()
+  }, [])
 
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index)
+  }
+
+  // Fallback data if Sanity data fails to load
+  const contact = siteSettings?.contact || {
+    address: '3057 W. Holcombe Blvd, Suite 109, Houston, Texas 7702',
+    phone: '(555) 123-4567',
+    email: 'thelunamedspa@gmail.com',
+    googleMapsUrl: 'https://maps.app.goo.gl/soAudmixkutjSauB9',
   }
 
   return (
@@ -84,24 +111,24 @@ function ContactPage() {
                 <p>
                   <span className="font-semibold text-neutral-600">Address:</span>{' '}
                   <a
-                    href="https://maps.app.goo.gl/soAudmixkutjSauB9"
+                    href={contact.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary-700 transition-colors cursor-pointer"
                   >
-                    3057 W. Holcombe Blvd, Suite 109, Houston, Texas 7702
+                    {contact.address}
                   </a>
                 </p>
                 <p>
-                  <span className="text-neutral-600 font-semibold">Phone:</span> (555) 123-4567
+                  <span className="text-neutral-600 font-semibold">Phone:</span> {contact.phone}
                 </p>
                 <p>
                   <span className="text-neutral-600 font-semibold">Email:</span>{' '}
                   <a
-                    href="mailto:thelunamedspa@gmail.com"
+                    href={`mailto:${contact.email}`}
                     className="hover:text-primary-700 transition-colors"
                   >
-                    thelunamedspa@gmail.com
+                    {contact.email}
                   </a>
                 </p>
               </div>
@@ -110,47 +137,7 @@ function ContactPage() {
             {/* Follow Us - Right */}
             <div className="md:text-right">
               <h3 className="text-h3 font-serif font-bold italic text-primary-800 mb-4">Follow Us</h3>
-              <div className="flex gap-4 md:justify-end">
-                <a
-                  href="https://www.facebook.com/people/Luna-Essence-Medspa-and-Lash/61579948200539/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
-                  title="Follow us on TikTok"
-                >
-                  <img
-                    src="/images/social-icons/facebook-icon.svg"
-                    alt="Facebook"
-                    className="w-full h-full"
-                  />
-                </a>
-                <a
-                  href="https://www.instagram.com/lunaessencespa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
-                  title="Follow us on Instagram"
-                >
-                  <img
-                    src="/images/social-icons/instagram-icon.svg"
-                    alt="Instagram"
-                    className="w-full h-full"
-                  />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@lunaessencespa?_r=1&_t=ZT-92pRzWyyKsp&fbclid=IwY2xjawPKZsNleHRuA2FlbQIxMABicmlkETFSUDdoMjl1QmZPQnVNdUVZc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHv4wg3oO49fprfanWnN1hqKKgZy9XKMJ3OhQK3IgFBZwcyAWfuqyYu4znBsf_aem_-QhiGUb7pC-Z-Bbs7Z4JDA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
-                  title="Follow us on TikTok"
-                >
-                  <img
-                    src="/images/social-icons/tiktok-icon.svg"
-                    alt="TikTok"
-                    className="w-full h-full"
-                  />
-                </a>
-              </div>
+              <SocialMedia className="md:justify-end" />
             </div>
           </div>
 
@@ -164,7 +151,7 @@ function ContactPage() {
           {/* Map */}
           <div className="mb-16">
             <a
-              href="https://maps.app.goo.gl/soAudmixkutjSauB9"
+              href={contact.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="block hover:opacity-90 transition-opacity"

@@ -1,17 +1,19 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
-// Sanity client configuration
+// Use environment variables with hardcoded fallbacks
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '10k5i38n'
+const dataset = import.meta.env.VITE_SANITY_DATASET || 'production'
+
 export const client = createClient({
-  projectId: '10k5i38n',
-  dataset: 'production',
-  useCdn: true,
-  apiVersion: '2024-01-01',
+    projectId,
+    dataset,
+    useCdn: true,
+    apiVersion: '2024-01-01',
 })
 
-// Image URL builder
 const builder = imageUrlBuilder(client)
 
-export function urlFor(source) {
-  return builder.image(source)
+export const urlFor = (source) => {
+    return builder.image(source)
 }

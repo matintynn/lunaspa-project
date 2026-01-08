@@ -19,29 +19,20 @@ const policies = {
 
 const fallbackServices = [
     {
-        title: 'Lymphatic Drainage Massage',
-        price: '$135',
-        description: 'Manual, rhythmic strokes encourage detoxification, reduce puffiness, and support immune health after surgery or travel.',
+        title: 'Luna Signature Back Treatment',
+        price: '$200',
         image: bodyImage,
     },
     {
-        title: 'Body Sculpt + RF Tightening',
-        price: '$225',
-        description: 'Radiofrequency heat plus vacuum therapy contours stubborn zones and boosts collagen for firmer-looking skin.',
+        title: 'Back Peels Treatment',
+        price: '$170',
         image: bodyImage,
     },
     {
-        title: 'Infrared Detox Wrap',
-        price: '$165',
-        description: 'Mineral-enriched wrap with infrared heat to encourage sweat detox, ease muscle tension, and smooth the appearance of cellulite.',
+        title: 'Arm Treatment',
+        price: '$100',
         image: bodyImage,
-    },
-    {
-        title: 'Back Renewal Ritual',
-        price: '$155',
-        description: 'Deep cleanse, exfoliation, extractions, and hydrating mask dedicated to the back, perfect before events or vacations.',
-        image: bodyImage,
-    },
+    }
 ]
 
 function BodyServiceDetail() {

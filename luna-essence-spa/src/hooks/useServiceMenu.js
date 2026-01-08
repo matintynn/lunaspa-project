@@ -20,8 +20,8 @@ export function useServiceMenu(category, fallbackServices = []) {
                         title: service.title,
                         price: service.price,
                         description: service.description,
-                        refillTitle: service.refillTitle,
-                        refills: service.refills || [],
+                        noteTitle: service.noteTitle,
+                        addNote: service.addNote || [],
                         image: service.image,
                     }))
                     setServices(formatted)

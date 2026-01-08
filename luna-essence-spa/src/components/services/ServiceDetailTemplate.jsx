@@ -50,14 +50,14 @@ function ServiceDetailTemplate({ header, services = [], addOns = [], policies, b
                                         </span>
                                     </div>
                                     <p className="text-neutral-500 font-light mb-2">{service.description}</p>
-                                    {(service.refillTitle || (service.refills && service.refills.length > 0)) && (
+                                    {(service.noteTitle || (service.addNote && service.addNote.length > 0)) && (
                                         <div className="text-neutral-500 font-light mb-4">
-                                            {service.refillTitle && (
-                                                <strong className="text-primary-800">{service.refillTitle}</strong>
+                                            {service.noteTitle && (
+                                                <strong className="text-primary-800">{service.noteTitle}</strong>
                                             )}
-                                            {service.refills && service.refills.length > 0 && (
+                                            {service.addNote && service.addNote.length > 0 && (
                                                 <ul className="list-disc ml-6 mt-1">
-                                                    {service.refills.map((r, i) => (
+                                                    {service.addNote.map((r, i) => (
                                                         <li key={i}>{r}</li>
                                                     ))}
                                                 </ul>

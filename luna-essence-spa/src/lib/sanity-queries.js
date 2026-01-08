@@ -118,8 +118,8 @@ export async function fetchServices() {
         alt,
         hotspot
       },
-      refillTitle,
-      refills,
+      noteTitle,
+      addNote,
       order
     }
   `
@@ -153,8 +153,8 @@ export async function fetchServicesByCategory(category) {
         alt,
         hotspot
       },
-      refillTitle,
-      refills,
+      noteTitle,
+      addNote,
       order
     }
   `
@@ -188,8 +188,8 @@ export async function fetchService(id) {
         alt,
         hotspot
       },
-      refillTitle,
-      refills,
+      noteTitle,
+      addNote,
       order
     }
   `

@@ -13,6 +13,7 @@ export default {
                     { title: 'Facial Treatments', value: 'facial' },
                     { title: 'Body Treatments', value: 'body' },
                     { title: 'Medical Treatments', value: 'medical' },
+                    { title: 'Eyebrows Treatments', value: 'eyebrows' },
                 ],
             },
             validation: (Rule) => Rule.required(),
@@ -28,7 +29,6 @@ export default {
             title: 'Price',
             type: 'string',
             description: 'e.g., "$99"',
-            validation: (Rule) => Rule.required(),
         },
         {
             name: 'description',

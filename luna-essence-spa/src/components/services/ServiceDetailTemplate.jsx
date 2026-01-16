@@ -4,6 +4,33 @@ import Button from '../shared/Button'
 import AddOnServicesSection from './AddOnServicesSection'
 import PoliciesSection from './PoliciesSection'
 import arrowIcon from '../../assets/images/icons/arrow-icon.svg'
+import lunaLogo from '../../assets/images/luna-logo.svg'
+
+// Circular image container component - Luna Spa branded style
+// Outer circle: 300px, bg-secondary-200
+// Inner circle: 270px, border-primary-600, contains the image
+function ServiceImageCircle({ src, alt, fallbackSrc = lunaLogo }) {
+    const imageSrc = src || fallbackSrc
+    const isFallback = !src
+
+    return (
+        <div
+            className="relative rounded-full bg-secondary-200"
+            style={{ width: '300px', height: '300px' }}
+        >
+            <div
+                className="absolute rounded-full border border-primary-600 overflow-hidden flex items-center justify-center"
+                style={{ width: '270px', height: '270px', top: '15px', right: '40px' }}
+            >
+                <img
+                    src={imageSrc}
+                    alt={alt}
+                    className={isFallback ? 'w-32 h-32 object-contain opacity-50' : 'w-full h-full object-cover'}
+                />
+            </div>
+        </div>
+    )
+}
 
 
 function ServiceDetailTemplate({ header, services = [], addOns = [], policies, bookingUrl, loading = false, emptyMessage = 'New services are coming soon. Please check back!' }) {
@@ -32,16 +59,12 @@ function ServiceDetailTemplate({ header, services = [], addOns = [], policies, b
                         </div>
                     )}
                     {services.map((service, idx) => {
-                        const renderedImage = service.image || null
                         return (
                             <div key={`${service.title}-${idx}`} className="flex flex-col md:flex-row items-center gap-8 mb-24">
-                                {renderedImage && (
-                                    <img
-                                        src={renderedImage}
-                                        alt={service.title}
-                                        style={{ width: 'auto', height: 'auto', maxWidth: '300px' }}
-                                    />
-                                )}
+                                <ServiceImageCircle
+                                    src={service.image}
+                                    alt={service.title}
+                                />
                                 <div className="flex-1 w-full">
                                     <div className="flex items-center gap-4 mb-2">
                                         <h2 className="text-h2 font-serif font-semibold italic text-primary-800">{service.title}</h2>

@@ -589,7 +589,43 @@ function DesignGuidePage() {
                         <h3 className="text-h4 font-serif font-semibold text-primary-700 mb-6">Images & Visual Design</h3>
                         <div className="bg-white rounded-xl p-6 md:p-8 border border-neutral-200">
                             <div className="grid md:grid-cols-2 gap-8">
-                                {/* Image Example */}
+                                {/* Service Image Circle Component */}
+                                <div>
+                                    <h4 className="text-body-lg font-semibold text-neutral-700 mb-4">Service Image Circle</h4>
+                                    <div className="flex flex-col items-center">
+                                        {/* Demo of the circular image container */}
+                                        <div
+                                            className="flex items-center justify-center rounded-full bg-secondary-200"
+                                            style={{ width: '300px', height: '300px' }}
+                                        >
+                                            <div
+                                                className="rounded-full border border-primary-600 overflow-hidden flex items-center justify-center bg-white"
+                                                style={{ width: '270px', height: '270px' }}
+                                            >
+                                                <img
+                                                    src="/images/services/lash-service/mega-lash-image.png"
+                                                    alt="Service Example"
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="mt-4 text-center">
+                                            <p className="text-body-sm text-neutral-600 font-medium">Luna Spa Branded Image Container</p>
+                                            <p className="text-body-xs text-neutral-500 mt-1">Outer: 300px • Inner: 270px</p>
+                                        </div>
+                                    </div>
+                                    <div className="bg-amber-50 rounded-lg p-4 mt-4 border border-amber-200">
+                                        <h5 className="font-semibold text-amber-800 text-body-sm mb-2">📐 Image Upload Guidelines</h5>
+                                        <ul className="text-body-xs text-amber-700 space-y-1">
+                                            <li>• Upload images in <strong>square format (300px × 300px)</strong></li>
+                                            <li>• Images are automatically cropped to circle</li>
+                                            <li>• Center your subject in the middle of the image</li>
+                                            <li>• If no image uploaded, Luna logo is used as fallback</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {/* Brand Imagery Example */}
                                 <div>
                                     <h4 className="text-body-lg font-semibold text-neutral-700 mb-4">Brand Imagery</h4>
                                     <div className="overflow-hidden rounded-3xl border-4 border-primary-200 shadow-lg">

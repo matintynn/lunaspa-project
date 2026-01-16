@@ -7,10 +7,9 @@ import Container from '../shared/Container'
  * Features background image, primary-100 background, and proper spacing.
  * 
  * @param {Object} policies - Object containing refill and correction policies
- * @param {string} consentFormUrl - URL to the consent form
  * @returns {JSX.Element} Policies section
  */
-function PoliciesSection({ policies, consentFormUrl }) {
+function PoliciesSection({ policies }) {
     return (
         <section>
             <div className="py-20">
@@ -18,24 +17,6 @@ function PoliciesSection({ policies, consentFormUrl }) {
                     Policies
                 </h3>
                 <div className="">
-                    {/* Consent Form */}
-                    {consentFormUrl && (
-                        <div className="mb-6">
-                            <strong className="text-primary-800 font-semibold">Consent:</strong>
-                            <p className="text-base md:text-md leading-relaxed text-neutral-500 font-light font-sans mt-2">
-                                Before coming to the clinic, please fill out our{' '}
-                                <a
-                                    href={consentFormUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-primary-800 font-semibold underline hover:text-primary-600 transition-colors"
-                                >
-                                    Consent & Liability Waiver Form
-                                </a>{' '}
-                                to save time when you arrive.
-                            </p>
-                        </div>
-                    )}
                     <div className="mb-6">
                         <strong className="text-primary-800 font-semibold">Keep in mind:</strong>
                         <ul className="list-none ml-0 mt-2">

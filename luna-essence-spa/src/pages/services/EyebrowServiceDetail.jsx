@@ -30,7 +30,7 @@ function EyebrowServiceDetail() {
 
     return (
         <ServiceDetailTemplate
-            header="EYEBROW MENU"
+            header="Eyebrow Menu"
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"

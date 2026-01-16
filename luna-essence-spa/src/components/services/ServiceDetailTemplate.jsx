@@ -23,10 +23,26 @@ function ServiceDetailTemplate({ header, services = [], addOns = [], policies, b
     return (
         <section className="mt-24">
             <Container className='py-20 md:pb-16'>
-                <h1 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-12">
+                <h1 className="text-h1 font-serif font-semibold italic text-primary-800 text-center mb-4">
                     {header}
                 </h1>
-                <div className="mx-auto">
+
+                {/* Consent Form Sub-headline */}
+                {consentFormUrl && (
+                    <p className="text-center text-neutral-500 font-light mb-12">
+                        Before coming to the clinic, please fill out our{' '}
+                        <a
+                            href={consentFormUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary-800 font-semibold underline hover:text-primary-600 transition-colors"
+                        >
+                            Consent & Liability Waiver Form
+                        </a>{' '}
+                        to save time when you arrive.
+                    </p>
+                )}
+                <div className="mx-auto mt-24">
                     {services.length === 0 && (
                         <div className="text-center text-neutral-500 font-light py-12">
                             {loading ? 'Loading services...' : emptyMessage}
@@ -81,7 +97,7 @@ function ServiceDetailTemplate({ header, services = [], addOns = [], policies, b
                     )}
 
                     {hasPolicies && (
-                        <PoliciesSection policies={policies} consentFormUrl={consentFormUrl} />
+                        <PoliciesSection policies={policies} />
                     )}
 
                     {/* Go Back Button */}

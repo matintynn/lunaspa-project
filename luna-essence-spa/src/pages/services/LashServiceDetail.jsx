@@ -84,7 +84,7 @@ function LashServiceDetail() {
 
     return (
         <ServiceDetailTemplate
-            header="LASH MENU"
+            header="Lash Menu"
             services={services}
             addOns={addOns}
             policies={policies}

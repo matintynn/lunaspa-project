@@ -25,7 +25,7 @@ function MedicalServiceDetail() {
 
     return (
         <ServiceDetailTemplate
-            header="MEDICAL MENU"
+            header="Medical Treatments Menu"
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"

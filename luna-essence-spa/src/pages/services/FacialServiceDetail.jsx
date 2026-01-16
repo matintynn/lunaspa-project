@@ -31,7 +31,7 @@ function FacialServiceDetail() {
 
     return (
         <ServiceDetailTemplate
-            header="FACIAL MENU"
+            header="Facial Menu"
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"

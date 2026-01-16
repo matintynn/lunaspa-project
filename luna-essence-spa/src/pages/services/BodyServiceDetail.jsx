@@ -40,7 +40,7 @@ function BodyServiceDetail() {
 
     return (
         <ServiceDetailTemplate
-            header="BODY MENU"
+            header="Body Menu"
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"

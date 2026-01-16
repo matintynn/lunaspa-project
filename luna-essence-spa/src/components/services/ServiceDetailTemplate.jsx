@@ -7,7 +7,7 @@ import PoliciesSection from './PoliciesSection'
 import arrowIcon from '../../assets/images/icons/arrow-icon.svg'
 
 
-function ServiceDetailTemplate({ header, services = [], addOns = [], policies, bookingUrl, loading = false, emptyMessage = 'New services are coming soon. Please check back!' }) {
+function ServiceDetailTemplate({ header, services = [], addOns = [], policies, bookingUrl, consentFormUrl, loading = false, emptyMessage = 'New services are coming soon. Please check back!' }) {
     const navigate = useNavigate()
 
     const handleGoBack = () => {
@@ -81,7 +81,7 @@ function ServiceDetailTemplate({ header, services = [], addOns = [], policies, b
                     )}
 
                     {hasPolicies && (
-                        <PoliciesSection policies={policies} />
+                        <PoliciesSection policies={policies} consentFormUrl={consentFormUrl} />
                     )}
 
                     {/* Go Back Button */}

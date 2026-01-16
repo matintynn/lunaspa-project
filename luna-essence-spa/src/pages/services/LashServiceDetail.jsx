@@ -89,6 +89,7 @@ function LashServiceDetail() {
             addOns={addOns}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"
+            consentFormUrl="https://docs.google.com/forms/d/1hzSUwNeb3_IwiVew1W8M3oBeHOfyMWXePchXUfdkWAQ/viewform"
             loading={loading}
         />
     )

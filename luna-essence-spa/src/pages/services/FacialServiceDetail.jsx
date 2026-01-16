@@ -35,6 +35,7 @@ function FacialServiceDetail() {
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"
+            consentFormUrl="https://docs.google.com/forms/d/1twLLht_nJYMz9kTXsPDmCZjnNjl-HykDfzsVaXwbldU/viewform"
             loading={loading}
         />
     )

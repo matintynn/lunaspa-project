@@ -34,6 +34,7 @@ function EyebrowServiceDetail() {
             services={services}
             policies={policies}
             bookingUrl="https://thelunamedspa.glossgenius.com/services"
+            consentFormUrl="https://docs.google.com/forms/d/1rmbgChZiFYYVuq_eZehGVZL9tJjnUArMqfRb38lArz0/viewform"
             loading={loading}
         />
     )

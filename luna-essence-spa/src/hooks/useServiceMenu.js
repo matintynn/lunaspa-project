@@ -36,6 +36,11 @@ export function useServiceMenu(category, fallbackServices = []) {
         }
 
         loadServices()
+        console.log('SANITY ENV CHECK', {
+            projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+            dataset: import.meta.env.VITE_SANITY_DATASET,
+        })
+
 
         return () => {
             isMounted = false

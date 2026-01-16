@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Button from '../shared/Button'
+import ServiceImageCircle from '../shared/ServiceImageCircle'
 import backgroundImage from '../../assets/images/background/background-image.png'
 import arrowIcon from '../../assets/images/icons/arrow-icon.svg'
 import facialImage from '../../assets/images/services/facial-service-image.png'
@@ -96,8 +97,6 @@ function ServicesSection() {
                         <div className="flex flex-col gap-12 md:gap-0">
                             {services.map((service, index) => {
                                 const isEven = (index + 1) % 2 === 0
-                                const isLarge = [0, 1, 3, 5].includes(index) // Facial, Lash, Body, Skincare
-                                const imageSize = isLarge ? 'w-80 h-80 md:w-96 md:h-96' : 'w-80 h-80 md:w-96 md:h-96'
 
                                 return (
                                     <div
@@ -108,14 +107,12 @@ function ServicesSection() {
                                             }`}
                                     >
                                         {/* Image */}
-                                        <div className={`${imageSize} flex-shrink-0`}>
-                                            <div className="background-transparent w-full h-full">
-                                                <img
-                                                    src={service.image}
-                                                    alt={service.title}
-                                                    className="w-full h-full object-contain rounded-full transition-transform duration-300 ease-in-out group-hover:animate-float"
-                                                />
-                                            </div>
+                                        <div className="flex-shrink-0 transition-transform duration-300 ease-in-out group-hover:animate-float">
+                                            <ServiceImageCircle
+                                                src={service.image}
+                                                alt={service.title}
+                                                size="lg"
+                                            />
                                         </div>
 
                                         {/* Content */}

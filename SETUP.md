@@ -151,6 +151,21 @@ npm run dev
 
 App runs at: `http://localhost:5173`
 
+### Design Guide Login Credentials
+
+The `/design-guide` page is protected by a simple account login.
+
+In `luna-essence-spa`, create a `.env` file (or copy `.env.example`) and set:
+
+```bash
+VITE_DESIGN_GUIDE_ACCOUNT=your-account-name
+VITE_DESIGN_GUIDE_PASSWORD=your-password
+```
+
+If these are not set, the app falls back to:
+- Account: `client`
+- Password: `luna123`
+
 ## Sanity Configuration
 
 - **Project ID**: `10k5i38n`

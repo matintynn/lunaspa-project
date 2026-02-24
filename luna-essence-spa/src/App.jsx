@@ -11,7 +11,7 @@ import EyebrowServiceDetail from './pages/services/EyebrowServiceDetail'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import DesignGuidePage from './pages/DesignGuidePage'
-import DesignGuideLayout from './pages/DesignGuideLayout'
+import DesignGuideAuthGate from './components/design-guide/DesignGuideAuthGate'
 
 function App() {
   return (
@@ -19,9 +19,9 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/design-guide" element={
-          <DesignGuideLayout>
+          <DesignGuideAuthGate>
             <DesignGuidePage />
-          </DesignGuideLayout>
+          </DesignGuideAuthGate>
         } />
         <Route path="/" element={<Layout><HomePage /></Layout>} />
         <Route path="/services" element={<Layout><ServicesPage /></Layout>} />

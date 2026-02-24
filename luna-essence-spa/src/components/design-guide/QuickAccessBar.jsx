@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../shared/Button'
+import { isDesignGuideAuthenticated, setDesignGuideAuthenticated } from '../../lib/designGuideAuth'
 
 const sections = [
     { id: 'intro', label: 'Back to Top' },
@@ -15,6 +16,8 @@ const sections = [
 
 function QuickAccessBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const navigate = useNavigate()
+    const isAuthenticated = isDesignGuideAuthenticated()
 
     const scrollToSection = (id) => (e) => {
         e.preventDefault()
@@ -25,6 +28,17 @@ function QuickAccessBar() {
         const top = el.getBoundingClientRect().top + window.scrollY - offset
         window.scrollTo({ top, behavior: 'smooth' })
         setIsMenuOpen(false)
+    }
+
+    const handleLogout = () => {
+        setDesignGuideAuthenticated(false)
+        setIsMenuOpen(false)
+        navigate('/design-guide', { replace: true })
+    }
+
+    const handleLogin = () => {
+        setIsMenuOpen(false)
+        navigate('/design-guide')
     }
 
     return (
@@ -57,6 +71,14 @@ function QuickAccessBar() {
                         Go to Website
                     </Button>
                 </Link>
+                <Button
+                    variant="secondary"
+                    size="sm"
+                    className="px-4 py-2"
+                    onClick={isAuthenticated ? handleLogout : handleLogin}
+                >
+                    {isAuthenticated ? 'Logout' : 'Login'}
+                </Button>
             </div>
 
             {/* Mobile: Quick Links bar */}
@@ -100,9 +122,17 @@ function QuickAccessBar() {
                     <Link
                         to="/"
                         className="text-navlink font-serif text-primary-700 font-semibold pt-4 border-t border-neutral-200"
+                        onClick={() => setIsMenuOpen(false)}
                     >
                         Go to Website →
                     </Link>
+                    <button
+                        type="button"
+                        onClick={isAuthenticated ? handleLogout : handleLogin}
+                        className="text-navlink font-serif text-primary-700 font-semibold"
+                    >
+                        {isAuthenticated ? 'Logout' : 'Login'}
+                    </button>
                 </div>
             </div>
 

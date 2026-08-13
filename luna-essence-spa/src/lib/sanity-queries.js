@@ -9,7 +9,7 @@ import { client, urlFor } from './sanity'
  * @returns {Promise<Object>} Site settings object
  */
 export async function fetchSiteSettings() {
-    const query = `
+  const query = `
     *[_type == "siteSettings"][0] {
       businessHours,
       contact,
@@ -17,13 +17,13 @@ export async function fetchSiteSettings() {
       mapImage
     }
   `
-    try {
-        const settings = await client.fetch(query)
-        return settings || null
-    } catch (error) {
-        console.error('Error fetching site settings:', error)
-        return null
-    }
+  try {
+    const settings = await client.fetch(query)
+    return settings || null
+  } catch (error) {
+    console.error('Error fetching site settings:', error)
+    return null
+  }
 }
 
 /**
@@ -35,7 +35,7 @@ export async function fetchSiteSettings() {
  * @returns {Promise<Array>} Array of team member objects
  */
 export async function fetchTeamMembers() {
-    const query = `
+  const query = `
     *[_type == "teamMember"] | order(order asc) {
       _id,
       name,
@@ -53,13 +53,13 @@ export async function fetchTeamMembers() {
       order
     }
   `
-    try {
-        const members = await client.fetch(query)
-        return members || []
-    } catch (error) {
-        console.error('Error fetching team members:', error)
-        return []
-    }
+  try {
+    const members = await client.fetch(query)
+    return members || []
+  } catch (error) {
+    console.error('Error fetching team members:', error)
+    return []
+  }
 }
 
 /**
@@ -68,7 +68,7 @@ export async function fetchTeamMembers() {
  * @returns {Promise<Object>} Team member object
  */
 export async function fetchTeamMember(id) {
-    const query = `
+  const query = `
     *[_type == "teamMember" && _id == $id][0] {
       _id,
       name,
@@ -85,13 +85,13 @@ export async function fetchTeamMember(id) {
       }
     }
   `
-    try {
-        const member = await client.fetch(query, { id })
-        return member || null
-    } catch (error) {
-        console.error('Error fetching team member:', error)
-        return null
-    }
+  try {
+    const member = await client.fetch(query, { id })
+    return member || null
+  } catch (error) {
+    console.error('Error fetching team member:', error)
+    return null
+  }
 }
 
 /**
@@ -103,10 +103,11 @@ export async function fetchTeamMember(id) {
  * @returns {Promise<Array>} Array of service objects
  */
 export async function fetchServices() {
-    const query = `
+  const query = `
     *[_type == "serviceDetail"] | order(order asc) {
       _id,
       category,
+      subCategory,
       title,
       price,
       description,
@@ -123,13 +124,13 @@ export async function fetchServices() {
       order
     }
   `
-    try {
-        const services = await client.fetch(query)
-        return services || []
-    } catch (error) {
-        console.error('Error fetching services:', error)
-        return []
-    }
+  try {
+    const services = await client.fetch(query)
+    return services || []
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    return []
+  }
 }
 
 /**
@@ -138,10 +139,11 @@ export async function fetchServices() {
  * @returns {Promise<Array>} Array of service objects for the category
  */
 export async function fetchServicesByCategory(category) {
-    const query = `
+  const query = `
     *[_type == "serviceDetail" && category == $category] | order(order asc) {
       _id,
       category,
+      subCategory,
       title,
       price,
       description,
@@ -158,13 +160,13 @@ export async function fetchServicesByCategory(category) {
       order
     }
   `
-    try {
-        const services = await client.fetch(query, { category })
-        return services || []
-    } catch (error) {
-        console.error(`Error fetching ${category} services:`, error)
-        return []
-    }
+  try {
+    const services = await client.fetch(query, { category })
+    return services || []
+  } catch (error) {
+    console.error(`Error fetching ${category} services:`, error)
+    return []
+  }
 }
 
 /**
@@ -173,7 +175,7 @@ export async function fetchServicesByCategory(category) {
  * @returns {Promise<Object>} Service object
  */
 export async function fetchService(id) {
-    const query = `
+  const query = `
     *[_type == "serviceDetail" && _id == $id][0] {
       _id,
       category,
@@ -193,13 +195,13 @@ export async function fetchService(id) {
       order
     }
   `
-    try {
-        const service = await client.fetch(query, { id })
-        return service || null
-    } catch (error) {
-        console.error('Error fetching service:', error)
-        return null
-    }
+  try {
+    const service = await client.fetch(query, { id })
+    return service || null
+  } catch (error) {
+    console.error('Error fetching service:', error)
+    return null
+  }
 }
 
 /**
@@ -212,8 +214,8 @@ export async function fetchService(id) {
  * @returns {string} Image URL string
  */
 export function getImageUrl(image) {
-    if (!image || !image.asset) return null
-    return urlFor(image).url()
+  if (!image || !image.asset) return null
+  return urlFor(image).url()
 }
 
 /**
@@ -222,12 +224,12 @@ export function getImageUrl(image) {
  * @returns {Object} Formatted team member object
  */
 export function formatTeamMember(member) {
-    if (!member) return null
-    return {
-        ...member,
-        image: getImageUrl(member.image),
-        experience: `${member.yearsExperience} years experience`,
-    }
+  if (!member) return null
+  return {
+    ...member,
+    image: getImageUrl(member.image),
+    experience: `${member.yearsExperience} years experience`,
+  }
 }
 
 /**
@@ -236,11 +238,11 @@ export function formatTeamMember(member) {
  * @returns {Object} Formatted service object
  */
 export function formatService(service) {
-    if (!service) return null
-    return {
-        ...service,
-        image: getImageUrl(service.image),
-    }
+  if (!service) return null
+  return {
+    ...service,
+    image: getImageUrl(service.image),
+  }
 }
 
 /**
@@ -249,7 +251,7 @@ export function formatService(service) {
  * @returns {Array} Array of formatted team members
  */
 export function formatTeamMembers(members) {
-    return members.map(formatTeamMember)
+  return members.map(formatTeamMember)
 }
 
 /**
@@ -258,5 +260,5 @@ export function formatTeamMembers(members) {
  * @returns {Array} Array of formatted services
  */
 export function formatServices(services) {
-    return services.map(formatService)
+  return services.map(formatService)
 }

@@ -23,6 +23,7 @@ export function useServiceMenu(category, fallbackServices = []) {
                         noteTitle: service.noteTitle,
                         addNote: service.addNote || [],
                         image: service.image,
+                        subCategory: service.subCategory || null,
                     }))
                     setServices(formatted)
                 }

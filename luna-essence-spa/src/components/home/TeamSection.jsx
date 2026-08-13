@@ -3,8 +3,6 @@ import Container from '../shared/Container'
 import { fetchTeamMembers, formatTeamMembers } from '../../lib/sanity-queries'
 import tiffanyImage from '../../assets/images/staffs/tiffany-image.jpg'
 import angieImage from '../../assets/images/staffs/angie-image.jpg'
-import daisieImage from '../../assets/images/staffs/daisie-image.jpg'
-
 const fallbackTeamMembers = [
     {
         image: tiffanyImage,
@@ -19,13 +17,6 @@ const fallbackTeamMembers = [
         name: 'Angie Tran',
         title: 'Esthetician and Lash tech',
         bio: 'Experienced medical esthetician focused on acne, pigmentation, and skin renewal. Angie delivers tailored, science-backed treatments that restore skin health, clarity, and long-lasting confidence.'
-    },
-    {
-        image: daisieImage,
-        experience: '6 years experience',
-        name: 'Daisie Lai',
-        title: 'Esthetician and Lash tech',
-        bio: 'Medical esthetician specializing in corrective skincare, acne, and skin rejuvenation. Daisie combines clinical knowledge with personalized treatments to help clients achieve healthy.'
     }
 ]
 
@@ -83,7 +74,7 @@ function TeamSection() {
                         We’re showing our core team while we reconnect to Sanity. All data will sync as soon as the connection is restored.
                     </div>
                 )}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 py-16 md:py-24 lg:py-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 py-16 md:py-24 lg:py-32 max-w-4xl mx-auto">
                     {displayedMembers.map((member, index) => (
                         <div key={index} className="flex flex-col">
                             {/* Image with rounded top corners */}

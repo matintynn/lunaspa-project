@@ -19,6 +19,13 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
+            name: 'subCategory',
+            title: 'Sub-Category (Facial only)',
+            type: 'string',
+            description: 'Optional grouping label shown as a tab on the Facial menu page (e.g. "Classic Facials", "Anti-Aging")',
+            hidden: ({ document }) => document?.category !== 'facial',
+        },
+        {
             name: 'title',
             title: 'Service Title',
             type: 'string',
